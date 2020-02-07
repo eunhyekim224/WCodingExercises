@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS practice</title>
+        <style>       
+            #mascot {    
+                display: block;
+                width: 76px;
+                height: 76px;
+                background: url("./zozor_sad.png") no-repeat;
+                background-size: 76px 76px;
+            }
+            
+            #mascot[data-state="happy"] {
+                background: url("./zozor_happy.png") no-repeat;
+                background-size: 76px 76px;
+            }
+
+            #output3 {
+                font-size: 13px;
+                font-style: italic;
+                margin: 0.25em 0;
+                padding: 0.25em 40px;
+                line-height: 1.45;
+                position: relative;
+                color: #fff;
+            }
+
+            #output3 > blockquote {
+                color: #FF0;
+                font-size: 14px;
+                display: block;
+                margin-top: 5px;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body> 
+        <!-- 1 -->
+        <div id="output">Link to <a href="#">Wcoding</a></a></div>
+        <!-- 2 -->
+        <div id="output2">Link to <span id="mascot"></span></div>   
+        <!-- 3 -->
+        <div id="output3">We are gonna have the destiny that we deserve.<cite>Albert Einstein</cite></div>"
+    </body>
+    <script>
+        //1
+        let newLink = "http://wcoding.com";
+        let oldLink = document.querySelector("#output > a");
+        oldLink.href = newLink;
+        //2
+        let sadZozor = document.querySelector("#mascot");
+        sadZozor.setAttribute("data-state", "happy");
+        //3
+        let quoteElement = document.getElementById("output3");
+        let quoteText = quoteElement.innerHTML;
+
+        quoteElement.innerHTML = '<blockquote>' + quoteText + '<blockquote';
+
+    </script>
+</html>
+

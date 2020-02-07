@@ -1,0 +1,156 @@
+/* flexbox */
+
+/* #allImages {
+    margin: 11% auto;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image {
+    margin: 2px;
+}
+
+.coffee {
+    height: 256px;
+}
+
+.bagel, .product {
+    margin-top: -3px;
+    margin-left: 1px;
+}
+
+#whiteSpace {
+    width: 484px;
+} */
+
+/* you can create 2 flexboxes and wrap both! */
+
+
+/* display */
+
+
+/* #allImages {
+    margin: 12% auto;
+    text-align: center;
+}
+
+#allImages>div {
+    display: inline-block;
+   
+}
+
+#block1>div, #block2>div {
+    display: inline-block;
+} */
+
+
+
+
+
+/* float */
+
+/* .image {
+    margin: 2px;
+}
+
+#allImages {
+    margin: 12% 100px;
+    text-align: center;
+    font-size: 0; */
+    /* white-space: nowrap; */
+/* } */
+
+/* .bagel, .product {
+    margin-top: -3px;
+} */
+
+/* #allImages>div {
+    float: left;
+}
+
+#block1>div, #block2>div {
+    float: left;
+} */
+
+/* when you use float, set the height bc they're not in the normal flow! */
+
+
+
+/* positioning */
+
+
+#allImages {
+    margin: 12% 100px;
+    position: relative;
+}
+
+.image {
+    position: absolute;
+}
+
+.drink {
+    left: 484px;
+}
+
+.dessert {
+    left: 728px;
+}
+
+.bagel {
+    left: 484px;
+    top: 260px;
+}
+
+.product {
+    left: 968px;
+    top: 260px;
+}
+
+/* if I can use display:inline-block, I could move more than one images together (another way would be to use <span> but that would be ,messy
+
+/* text */
+
+.text {
+    position: absolute;
+    text-align: center;
+    line-height: 18px;
+    font-family:'Noto Serif', serif;
+    font-size: 15px;
+    color: #464646;
+    font-style: bold; 
+}
+
+/* absolute will catch the nearest absolute or relative block */
+
+.text strong {
+    font-size: 17px;
+    color: #7d645a;
+}
+
+
+.coffeeText {
+    top: 430px;
+    left: 119px;
+}
+
+.drinkText {
+    top: 184px;
+    left: 15px;
+}
+
+.dessertText {
+    top: 184px;
+    left: 122px;
+}
+
+.bagelText {
+    top: 184px;
+    left: 44px;
+}
+
+.productText {
+    top: 184px;
+    left: 15px;
+} 

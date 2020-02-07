@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS practice</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <ol id="zozor-books">
+            <li>Zozor at the farm</li>
+            <li>Zozor at the school</li>
+            <li>Zozor on vacation</li>
+            <li>Zozor in winter class</li>
+            <li>Zozor the syndicalist</li>
+            <li>Zozor on strike</li>
+        </ol>
+        <div id="output">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Browsers</th>
+                        <th scope="col">Developers</th>
+                        <th scope="col">Market Shares</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Internet Explorer</th>
+                        <td>Microsoft</td>
+                        <td>33,8%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Chrome</th>
+                        <td>Google</td>
+                        <td>24,4%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Safari</th>
+                        <td>Apple</td>
+                        <td>11,8%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- question 4 -->
+            <span id="mascot"></span>
+            <p>
+                Hello everyone, i am Zozor! <br/>
+                I am the official mascot of your teacher <br/>
+                I am a donkey but i can speak and learn. <br/>
+                With that one day i will rule the world!
+            </p>
+        </div>
+        <!-- question 5 -->
+        <div id="output2">
+            Hello everyone, i am Zozor and here is my family : ] </br>
+            <dl>
+                <dt>Zazette</dt>
+                <dd> My mum </dd>
+                <dt> Zozo </dt>
+                <dd> my dad </dd>
+                <dt> Zazie </dt>
+                <dd> My sister </dd>
+                <dt> Zazou </dt>
+                <dd> my brother </dd>
+            </dl>
+            <p>
+                I'm living in a pasture looking like the video clip
+                <a href="https://www.youtube.com/watch?v=Iwb6u1Jo1Mc"> Respire of <cite>Mickey 3D</cite></a>
+            </p>    
+        </div>
+       
+    </body>
+    <script>
+        ////question 1////
+        let ol = document.getElementById('zozor-books');
+
+        //create and insert 7th li
+        let seventhLi = ol.insertBefore(document.createElement('li'), ol.lastChild);
+        seventhLi.innerText = 'Zozor unemployed';
+
+        //clone 7th li to create 8th li and append to ol (also change text)
+        let eighthLi = seventhLi.cloneNode(false);
+        ol.appendChild(eighthLi)
+        eighthLi.innerText = 'Zozor makes a fortune';
+
+        ////question 2////
+
+        //create and insert tr 
+        let tbody = document.getElementsByTagName('tbody');
+
+        // let secondRow = document.getElementsByTagName('tr')[2];
+        // let newRow = tbody[0].insertBefore(document.createElement('tr'), secondRow);
+        // using insertAfter function
+        let newRow = insertAfter(document.createElement('tr'), tbody[0].firstChild.nextSibling);
+        console.log(newRow)
+
+        function insertAfter(newElement, afterElement) {
+            let parent = afterElement.parentNode;
+            if (parent.lastElementChild === afterElement) {
+                return parent.appendChild(newElement);
+            } else {
+                return parent.insertBefore(newElement, afterElement.nextSibling);
+            }
+        }
+    
+        //create firefox data and append to tr
+        let newBrowser = newRow.appendChild(document.createElement('th'));
+        newBrowser.innerText = 'Mozilla';
+        let newDev = newRow.appendChild(document.createElement('td'));
+        newDev.innerText = 'Firefox';
+        let newShares = newRow.appendChild(document.createElement('td'));
+        newShares.innerText = '27.8%';
+        
+
+        ////question 3////
+        //create the new structure
+        let figure = document.createElement('figure');
+        let image = figure.appendChild(document.createElement('img'));
+        image.setAttribute('src', 'zozor_happy.png');
+        image.setAttribute('alt', 'Photo of Zozor');
+
+        let caption = figure.appendChild(document.createElement('figcaption'))
+        caption.innerText = 'Photo of Zozor';
+
+        //replace <div id="output"> with the new structure
+        let span = document.getElementById('mascot');
+        span.parentNode.replaceChild(figure, span);
+        
+
+        ////question 4////
+        let breaks = document.querySelectorAll('p br')
+
+        for (let i=0, c=breaks.length; i<c; i++) {
+            console.log(document.querySelector('p').removeChild(breaks[i]));
+        }
+
+        ////question 5////
+        function removeChildren(parent) {
+            parent = document.querySelector(parent);
+
+            while (parent.hasChildNodes()) {
+                parent.removeChild(parent.lastChild);
+            }
+        }
+          
+        removeChildren('#output2');
+
+        //document.getElementById('output').innerHTML = '' would also remove all child elements
+
+        ////question 6////
+        
+        function createSimpleNode(element, attributes, content) {
+            element = document.createElement(element);
+
+            if (attributes) {
+                for (let item in attributes) {
+                    element.setAttribute(item, attributes[item]);
+                }
+            }    
+            if (content) {
+                element.innerText = content;
+            }
+            console.log(element);
+        }
+
+        let image2 = createSimpleNode('img', { src: 'wcoding.png', alt: 'Logo wcoding'});
+
+        let link = createSimpleNode('a', { 'class': 'external', href: 'www.wcoding.com'}, 'Link to wcoding website')
+
+    </script>
+</html>
+
+
+<!-- ; -->

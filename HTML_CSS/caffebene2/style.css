@@ -1,0 +1,16 @@
+table {
+    margin: 12% 100px;
+    width: 60%;
+    position: relative;
+    border-collapse: collapse;
+    font-size: 0;
+}
+
+td, th, tr {
+    padding: 3px;
+}
+
+.halfSize {
+    width: 238px;
+}
+

@@ -1,0 +1,249 @@
+@font-face {
+    font-family: 'Gotham Medium';
+    src: url("./fonts/Gotham\ Medium\ Regular.ttf") format('truetype');
+    font-weight: normal;
+}
+
+/* body with slides */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Gotham Medium';
+    color: white;
+}
+
+#allSections {
+    position: relative;
+}
+
+
+#allSections > div {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+#imageHolder {
+    background: url("./images/slide1.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    height: 100%;
+}
+
+#slide2 {
+    background: url("./images/slide2.jpg") center no-repeat;
+}
+
+#slide3 {
+    background: url("./images/slide3.jpg") center no-repeat;
+}
+
+#slide4 {
+    background: url("./images/slide4.jpg") center no-repeat;
+}
+
+/* slide 1 animations */
+
+header, .slide1Middle {
+    position: absolute;
+}
+
+#allSections:hover #imageHolder {
+    transition: all 2s ease;
+    transform: scale(2);
+}
+
+#slide1 {
+    overflow: hidden; 
+}
+
+/* header */
+
+header {
+    text-transform: uppercase;
+    font-size: 0.9em;
+    display: flex;
+    width: 97%;
+    justify-content: space-between;
+    margin: 10px 15px 0 15px;
+}
+
+.nav li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0 15px 0 0;
+}
+
+.mainNav li:hover {
+    opacity: 0.5;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#logo {
+    width: 7%;
+    padding-top: 15px;
+    margin-left: 20px;
+}
+
+
+#logo img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* middle content, buttons */
+
+.middle {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.button {
+    width: 40%;
+    border: 3px solid white;
+    border-radius: 50px;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* slide1 middle */
+
+#slide1Buttons {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    justify-content: space-between;
+}
+
+
+#smallText {
+    font-size: 0.8em;
+    padding-bottom: 3px;
+    margin-top: 0;
+    border-bottom: 2px solid white;
+}
+
+.middle h1 {
+    font-size: 2.5em;
+}
+
+#slide1Buttons p:hover {
+    color: black;
+    background-color: white;
+}
+
+/* slide2-4 middle */
+
+.slide2Middle h1,.slide4Middle p {
+    margin-bottom: 0;
+}
+
+.slide2Button, .slide3Button {
+    width: 16%;
+    color: black;
+    background-color: white;
+}
+
+.slide4Middle h1 {
+    margin-top: 0;  
+}
+
+/* arrows */
+
+.bottomArrow {
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    animation: bounce 2s infinite;
+} 
+
+@keyframes bounce {
+    10% {
+        transform: translateY(0px);
+    }
+    20% {
+        transform: translateY(5px);
+    }
+    30% {
+        transform: translateY(0px);
+    }
+    40% {
+        transform: translateY(0px);
+    }
+}
+
+/* hamburger menu */
+
+.hoverTrigger {
+    position: relative;
+}
+
+#sideNav {
+    position: absolute;
+    height: 850px;
+    top: 24px;
+    right: 26px;
+    width: 200px;
+    visibility: hidden;
+}
+
+#sideNav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 50px;
+}
+
+#sideNav img {
+    height: 50%;
+    width: 15%;
+    border-radius: 500px;
+    padding-right: 5px;
+    vertical-align: top;
+}
+
+#burger:hover+#sideNav {
+    animation: slideIn 2s;
+    visibility: visible;
+}
+
+@keyframes slideIn {
+    0%{top:24px;
+        right: -300px;}
+    100%{top: 24px;
+        right: 26px;}
+}
+
+#sideNav a {
+    color: black;
+}
+
+#sideNav li {
+    height: 50px;
+    border-bottom: 1px solid rgb(138, 137, 137);
+}
+

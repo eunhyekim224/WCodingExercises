@@ -1,0 +1,60 @@
+body {
+    font-family: 'Ibarra Real Nova', serif;
+    background-color: beige; 
+    margin: 50px 200px;
+    text-align: center;
+}
+
+h1 {
+
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+a {
+    color: rgba(200, 100, 200, 1);
+    
+}
+
+figure {
+    border: 2px dotted brown;
+    padding: 10px;
+}
+
+
+figure img {
+    width: 300px;
+    height: 200px;
+}
+
+li, a {
+    font-size: 20px;
+}
+
+.list {
+    border: 2px solid brown;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.story {
+    font-size: 20px;
+    color: brown;
+}
+
+#name {
+    color: #be1ea9;
+    text-decoration: underline;
+}
+
+#unorderedList {
+    text-align: center;
+}
+
+#logo {
+    text-align: right;
+}
+

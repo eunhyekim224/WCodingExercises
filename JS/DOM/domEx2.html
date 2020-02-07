@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS practice</title>
+        <!-- <script src="domEx2.js"></script> -->
+    </head>
+    <body>  
+    </body>
+    <script>
+        ////question 1//////
+        ////create nodes////
+        let strongText1 = document.createTextNode('World Wide Web Consortium');
+        let strongText2 = document.createTextNode('W3C');
+
+        let linkText1 = document.createTextNode('standards organization');
+        let linkText2 = document.createTextNode('World Wide Web');
+
+        let divText1 = document.createTextNode('The ');
+        let divStrong1 = document.createElement('strong');
+        let divText2 = document.createTextNode(', abbreviated as acronym ');
+        let divStrong2 = document.createElement('strong');
+        let divText3 = document.createTextNode(', is an ');
+
+        let divLink1 = document.createElement('a');
+        let divText4 = document.createTextNode(' non-profit organization responsible for promoting the compatibility of the ');
+        let divLink2 = document.createElement('a');
+
+        divLink1.href = "https://en.wikipedia.org/wiki/Standards_organization";
+        divLink1.title = "standards organization";
+
+        divLink2.href = "https://en.wikipedia.org/wiki/World_Wide_Web_Consortium";
+        divLink2.title = "World Wide Web";
+
+        let mainDiv = document.createElement('div');
+
+        ////append////
+
+        divStrong1.appendChild(strongText1);
+
+        divStrong2.appendChild(strongText2);
+
+        divLink1.appendChild(linkText1);
+        divLink2.appendChild(linkText2);
+
+        mainDiv.appendChild(divText1);
+        mainDiv.appendChild(divStrong1);
+        mainDiv.appendChild(divText2);
+        mainDiv.appendChild(divStrong2);
+        mainDiv.appendChild(divText3);
+        mainDiv.appendChild(divLink1);
+        mainDiv.appendChild(divText4);
+        mainDiv.appendChild(divLink2);
+
+        console.log(mainDiv);
+
+        document.body.appendChild(mainDiv);
+
+        ////question 2////
+
+        //for every li, append texts[i]
+        //for every text, create textnodes, then create elements (li's), then append the textnodes to li's, then append each li to ul 
+
+        //create pText textnode
+        //create p and ul element,
+        //create div, add id 
+        //append 
+
+        let pText = document.createTextNode('Languages based on ECMAScript :');
+        let para = document.createElement('p');
+
+        let ul = document.createElement('ul');
+        let ex2Div = document.createElement('div');
+        ex2Div.setAttribute('id', 'EX2');
+
+        let texts = ['Javascript', 'JScript', 'ActionsScript', 'EX4'];
+
+        //a loop for creating the lists and appending them to ul
+        for (let i=0, c=texts.length; i<c; i++) {
+            let text = document.createTextNode(texts[i]);
+            let li = document.createElement('li');
+            li.appendChild(text);
+            ul.appendChild(li);
+        }
+
+        para.appendChild(pText);
+        ex2Div.appendChild(para);
+        ex2Div.appendChild(ul);
+
+        document.body.appendChild(ex2Div);
+
+        ////question 3////
+
+        let paraText = document.createTextNode('Languages based on ECMAScript :');
+        let paragraph = document.createElement('p');
+
+        let dList = document.createElement('dl');
+        let ex3Div = document.createElement('div');
+        ex3Div.id = 'EX3';
+
+        //loop array of objects
+        //create all the objects with properties dt and dd
+        //then create a loop where, for each object, you create an element dt, dd , create textnodes object.dt and object.dd 
+        //and you append the textnodes to the respective elements 
+        //append dt and dd to dl 
+
+        let javaScript = {
+            dt: 'JavaScript',
+            dd: 'JavaScript is a scripting language mainly used in interactive web pages but also server-side.'
+        }
+
+        let jScript = {
+            dt: 'JScript',
+            dd: 'JScript is the generic name for several ECMAScript 3 implementations created by Microsoft.'
+        }
+
+        let actionScript = {
+            dt: 'ActionScript',
+            dd: 'ActionScript is the programming language used in client (Adobe Flash, Adobe Flex) and server (Flash Media server, JRun, Macromedia Generator) applications.'
+        }
+
+        let e4x = {
+            dt: 'EX4',
+            dd: 'ECMAScript for XML (E4X) is an XML extension to the ECMAScript language.'
+        }
+
+        let languages = [javaScript, jScript, actionScript, e4x];
+
+        for (let i=0, c=languages.length; i<c; i++) {
+            let dt = document.createElement('dt');
+            let dd = document.createElement('dd');
+            let dtText = document.createTextNode(languages[i].dt);
+            let ddText = document.createTextNode(languages[i].dd);
+            dt.appendChild(dtText);
+            dd.appendChild(ddText);
+            dList.appendChild(dt);
+            dList.appendChild(dd);
+        }
+
+        ex3Div.appendChild(dList);
+        document.body.appendChild(ex3Div);
+
+        ////question 4////
+        
+        //creating first level nodes//
+        let labelText = document.createTextNode('Image to upload :');
+
+        //creating second level nodes//
+        let legendText = document.createTextNode('Upload an image');
+        let label = document.createElement('label');
+        let input1 = document.createElement('input');
+        let padding = document.createElement('br');
+        let input2 = document.createElement('input');
+
+        //adding attributes to second level nodes//
+        label.setAttribute('for', 'inputUpload');
+        input1.setAttribute('type', 'file');
+        input1.setAttribute('name', 'inputUpload');
+        input1.id = 'inputUpload';
+        input2.setAttribute('type', 'submit');
+        input2.setAttribute('value', 'Send');
+
+        //creating 3rd level nodes//
+        let legend = document.createElement('legend');
+        let subDiv = document.createElement('div');
+        subDiv.setAttribute('style', 'text-align: center');
+        
+        //creating the top level nodes//
+        let fieldset = document.createElement('fieldset');
+        let form = document.createElement('form');
+        form.setAttribute('enctype', 'multipart/form-data');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', 'upload.php');
+        let bigDiv = document.createElement('div');
+        bigDiv.id = 'EX4';
+
+        //appending 1st level//
+        label.appendChild(labelText);
+
+        //appending 2nd level//
+        legend.appendChild(legendText);
+        subDiv.appendChild(label);
+        subDiv.appendChild(input1);
+        subDiv.appendChild(padding);
+        subDiv.appendChild(input2);
+
+        //appending 3rd level//
+        fieldset.appendChild(legend);
+        fieldset.appendChild(subDiv);
+
+        //appending top levels//
+        form.appendChild(fieldset);
+        bigDiv.appendChild(form);
+        document.body.appendChild(bigDiv);
+        
+    </script>
+</html>

@@ -1,0 +1,125 @@
+<!-- add border on css; fontawseome for gender arrrows; email with difff providers; placeholder for textarea; required areas name, mail, message,;  -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Zozor</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/6254ef993b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <img src="./images/zozor_logo.png" alt="logo">Zozor
+                <p>Travel book</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li>BLOG</li>
+                    <li>RESUME</li>
+                    <li>CONTACT</li>
+                </ul>
+            </nav>
+        </header>
+        <p id="headerSeparatorTop"></p>
+        <!-- <div id="banner">
+            <div id="smallBanner">
+                <p>Feedback on my last vacation in the USA</p>
+                <div id="redButton">
+                    <p>See article</p>
+                    <img src="./images/flecheblanchedroite.png" alt="arrow">
+                </div>
+            </div>
+        </div> -->
+        <section>
+            <form method="post" action="index.html">
+                <p>Contact Zozor</p>
+                <p>Personal Details</p>
+                <label for="name">Name : <input type="text" name="name" id="name" autofocus required></label>
+                <p>Gender : 
+                    <input type="radio" name="gender" value="female" id="female" checked><label for="female"><i class="fas fa-venus"></i></label>
+                    <input type="radio" name="gender" value="male" id="male"><label for="male"><i class="fas fa-mars"></i></label>
+                </p>
+                <p>
+                    <label for="email">Mail Address : </label>
+                    <input type="text" name="email" id="email" required>
+                    <select name="emailAddress" id="emailAddress">
+                    <option value="gmail">@gmail</option>
+                    <option value="naver">@naver</option>
+                    <option value="hotmail">@hotmail</option>
+                    <option value="yahoo">@yahoo</option>
+                    </select>
+                    .com
+                </p>
+                <p>
+                    <label for="object">Object :</label>
+                    <textarea name="object" id="object"></textarea>
+                </p>
+                <p>
+                    <label for="message">Message :</label>
+                    <textarea name="message" id="message" placeholder="Maximum 300 characters" maxlength="300" required></textarea>
+                </p>
+                <p>
+                    <input type="submit" value="Send">
+                </p>
+            </form>
+            <aside>
+                <h3 class="heading">AUTHOR DETAILS</h3> 
+                <p><img src="./images/zozor_classe.png" alt="zozor"></p>
+                <div id="bio">
+                    <p>Let me take the time to present myself: my name is Zozor, I was born in 2005.</p>
+                    <p> Slim, isn't it? That's why, today, I decided to write my biography in order for you to know who I am.</p>
+               </div>
+                <figure id="social">
+                    <img src="images/facebook.png" alt="facebook">
+                    <img src="images/twitter.png" alt="twitter">
+                    <img src="images/vimeo.png" alt="vimeo">
+                    <img src="images/flickr.png" alt="flickr">
+                    <img src="images/rss.png" alt="rss">
+                </figure>
+            </aside>
+        </section>
+        <div id="bottomLineContact">
+            <p id="separatorBottom"></p>
+            <div id="bottomArrow">
+                <img src="images/ico_top.png" alt="arrow_bottom">
+            </div>
+            <div id="ombre">
+                <img src="images/ombre.png" alt="shade">
+            </div>
+        </div>
+        <footer>
+            <div id="firstFooter">
+                <h3 class="heading">MY LAST TWEET</h3>
+                <p>Hii how are you??!</p>
+                <p>the 10/05/2018 11:12</p>
+            </div>
+            <div id="secondFooter">
+                <h3 class="heading pictures">MY PICTURES</h3>
+                <figure>
+                    <img src="images/photo1.jpg" alt="photo1">
+                    <img src="images/photo2.jpg" alt="photo2">
+                    <img src="images/photo3.jpg" alt="photo3">
+                    <img src="images/photo4.jpg" alt="photo4">
+                </figure>
+            </div>
+            <div id="thirdFooter">
+                <h3 class="heading">MY FRIENDS</h3>
+                <div id="part1">
+                    <p><img src="images/ico_liensexterne.png" alt="arrowRed">Pupi le lapin</p>
+                    <p><img src="images/ico_liensexterne.png" alt="arrowRed">Mr Baobab</p>
+                    <p><img src="images/ico_liensexterne.png" alt="arrowRed">Kaiwaii</p>
+                    <p><img src="images/ico_liensexterne.png" alt="arrowRed">Perceval.eu</p>
+                </div>
+                <div id="part2">
+                    <p><img src="images/ico_liensexterne.png" alt="arrowRed">Belette</p>
+                    <p><img src="images/ico_liensexterne.png" alt="arrowRed">Le concombre masque</p>
+                    <p><img src="images/ico_liensexterne.png" alt="arrowRed">Ptit prince</p>
+                    <p><img src="images/ico_liensexterne.png" alt="arrowRed">Mr fan</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background: url("https://i.hurimg.com/i/hdn/75/0x0/5a689ef82269a21ae871e3c8.jpg") center no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 73%;
+    width: 40%;
+    justify-content: center;
+    justify-content: space-around;
+    background-color: rgba(238, 238, 236, 0.6);
+    border-radius: 15px;
+}
+
+a {
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 2em;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+p a:first-child {
+    color: black;
+}
+
+p a:nth-child(2) {
+    color: red;
+}
+
+p a:nth-child(3) {
+    color: green;
+}
+
+p a:hover{
+    color: yellow;
+}
