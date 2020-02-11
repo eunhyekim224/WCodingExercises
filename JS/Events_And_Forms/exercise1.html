@@ -1,0 +1,141 @@
+<!-- QUESTION 1. -->
+
+<!-- 
+    Using noDom - when you click the button, show 'You clicked me' (can use textContent)
+ -->
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Events practice</title>
+    </head>
+    <body>
+        <div id="output">
+            <p class="center">
+                <button type="button" onclick="this.innerHTML = 'You clicked me'">Click me</button> 
+                
+            </p>
+        </div>
+    </body>
+    <script>
+    </script>
+</html> -->
+
+<!-- 
+    Using dom0 - when you click the button, show 'You clicked me'
+ -->
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Events practice</title>
+    </head>
+    <body>
+        <div id="output">
+            <p class="center">
+                <button type="button">Click me</button>
+            </p>
+        </div>
+    </body>
+    <script>
+        let button = document.querySelector('button');
+        button.onclick = function() {
+            this.innerHTML = 'You clicked me';
+        }
+    </script>
+</html> -->
+
+<!-- 
+    Using dom2 - when you click the button, show 'You clicked me'
+ -->
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Events practice</title>
+    </head>
+    <body>
+        <div id="output">
+            <p class="center">
+                <button type="button">Click me</button>
+            </p>
+        </div>
+    </body>
+    <script>
+        let button = document.querySelector('button');
+        button.addEventListener('click', function(e) {
+            e.target.textContent = 'You clicked me';
+        });
+    </script>
+</html> -->
+
+
+<!-- QUESTION 2. -->
+<!-- REMOVE AN EVENT BY CLONING -->
+<!-- because you're using an anonymous function, very difficult to remove the event using 'removeEventListener'. No reference attached to the event. So, clone and replace original element!-->
+<!-- notes - don't need to add another event listener on the cloned element  -->
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Events practice</title>
+    </head>
+    <body>
+        <div id="output">
+            <p class="center">
+                <button type="button">Click me</button>
+            </p>
+        </div>
+    </body>
+    <script>
+        let button = document.querySelector('button')
+        button.addEventListener('click', function(e) {
+            alert('You clicked me'); 
+        });
+
+        let newButton = button.cloneNode(true);
+
+        let parent = document.querySelector('.center');
+        parent.replaceChild(newButton, button);
+    </script>
+</html> -->
+
+<!-- QUESTION 3. -->
+<!-- Edit a list with prompt -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Events practice</title>
+    </head>
+    <body>
+        <div id="output">
+            <p>Some interpreted languages</p>
+            <ol>
+                <li>PHP</li>
+                <li>Ruby</li>
+                <li>Python</li>
+                <li>Perl</li>
+                <li>Javascript</li>
+                <li>Lua</li>
+                <li>VBSript</li>
+            </ol>
+        </div>
+    </body>
+    <script>
+        let listItems = document.getElementsByTagName('li');
+        for (let i=0, c=listItems.length; i<c; i++) {
+            let listItem = listItems[i];
+            listItem.addEventListener('click', function(e) {
+                do {
+                    let newItem = prompt('Would you like the change it to something else?', e.target.textContent);
+                    if (newItem) {
+                        e.target.textContent = newItem;
+                    } else if (newItem === null) {
+                        break;
+                    }
+                } while(newItem);  
+            });
+        }
+    </script>
+</html>

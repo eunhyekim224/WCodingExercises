@@ -1,0 +1,18 @@
+<script type="text/javascript">
+	var field = document.getElementById('field'),
+		down = document.getElementById('down'),
+		press = document.getElementById('press'),
+		up = document.getElementById('up');
+
+		field.addEventListener('keydown', function(e) {
+			down.innerHTML = e.keyCode;
+		});
+		field.addEventListener('keypress', function(e) {
+			press.innerHTML = e.keyCode;
+		});
+		field.addEventListener('keyup', function(e) {
+			up.innerHTML = e.keyCode;
+		});
+
+		alert(String.fromCharCode(84,101,115,116));// alert the word test
+</script>

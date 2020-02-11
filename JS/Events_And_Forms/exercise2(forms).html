@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Events practice 2</title>
+    </head>
+    <body>
+        <!-- question 1 -->
+        <textarea> Content of the textarea </textarea>
+
+        <!-- question 2 -->
+        <input type="radio" name="radiogroup" value="747" checked> Boeing 747
+        <input type="radio" name="radiogroup" value="737"> Boeing 737
+        <input type="radio" name="radiogroup" value="757"> Boeing 757
+
+        <!-- question 3 -->
+        <input type="text" name="stuffInput" id="stuffInput"/>
+        <!-- <input type="text"  name="stuffOutput" id="stuffOutput"/> -->
+        <div id="stuffOutput"></div>
+        <!-- question 4 -->
+        <form onsubmit="return myFramework.checkThisForm(this)">
+             <!-- question 1 -->
+        <textarea> Content of the textarea </textarea>
+
+        <!-- question 2 -->
+        <input type="radio" name="radiogroup" value="747" checked> Boeing 747
+        <input type="radio" name="radiogroup" value="737"> Boeing 737
+        <input type="radio" name="radiogroup" value="757"> Boeing 757
+
+        <!-- question 3 -->
+        <input type="text" name="stuffInput" id="stuffInput"/>
+        <!-- <input type="text"  name="stuffOutput" id="stuffOutput"/> -->
+        <div id="stuffOutput"></div>
+
+        </form>
+    </body>
+    <script>
+        // question 1
+        var texta = document.getElementsByTagName('textarea');
+        if (texta[0]) {
+            alert(texta[0].value.trim());
+        }
+
+        // question 2
+        var radios = document.getElementsByName('radiogroup');
+        var target = null;
+
+        for (var i=0, c=radios.length; i<c; i++) {
+            if (radios[i].checked) {
+                target = radios[i];
+                break;
+            }
+        }
+        
+        alert(target.value);
+
+        // question 3
+        var stuff = document.querySelector('#stuffInput');
+        var output = document.querySelector('#stuffOutput');
+
+        if (stuff && output) {
+            stuff.addEventListener('keyup', function() {
+                console.log(stuff.value.trim());
+                //if input
+                //output.value = stuff.value.trim();
+                //if div
+                output.textContent = stuff.value.trim();
+            });
+        }
+
+        // question 4        
+        var myFramework = {};
+
+        myFramework['checkThisForm'] = function(form) {
+            var inputs = form.querySelectorAll("input[type='text'");
+
+            for (var i=0, c=inputs.length; i<c; i++) {
+                if (!inputs[i].value) {
+                    return false;
+                }
+            }
+            return true; 
+        } 
+
+    //if there is an input, submit (true), if not, block submit (false)
+    </script>
+</html>

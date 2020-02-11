@@ -1,0 +1,43 @@
+<style>
+	#myDiv, #results {
+		margin : 50px;
+	}
+	#myDiv {
+		padding: 10px;
+		width : 200px;
+		text-align : center;
+		background-color: #000;
+	}
+	#myDiv div {
+		margin: 10px;
+		background-color: #555;
+		color:white;
+	}
+</style>
+
+
+
+<div id="myDiv">
+	<div>Text 1</div>
+	<div>Text 2</div>
+	<div>Text 3</div>
+	<div>Text 4</div>
+</div>
+<div id="results"></div>
+
+<script type="text/javascript">
+		var myDiv = document.getElementById('myDiv'),
+		divs = myDiv.querySelectorAll("div");
+    	results = document.getElementById('results');
+    	
+    	//////////////////// first step
+		myDiv.addEventListener('mouseover', function(e) {
+			let target = (e.target) ? e.target.id : e.relatedTarget.id;
+    		results.innerHTML += "The cursor has just entered."+target+"<br />";
+		},false);
+
+		myDiv.addEventListener('mouseout', function(e) {
+			let target = (e.target) ? e.target.id : e.relatedTarget.id;
+    		results.innerHTML += "The cursor has just entered."+target+"<br />";
+		},false);
+</script>

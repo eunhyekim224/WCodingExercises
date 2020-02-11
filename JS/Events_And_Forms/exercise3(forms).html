@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Events - Forms practice</title>
+    </head>
+    <body>
+        <!-- QUESTION 1 -->
+        <div id="output">
+            <ol class="left">
+                <li>
+                    <input type="checkbox"> About a tutorial
+                </li>
+                <li>
+                    <input type="checkbox"> thanks
+                </li>
+                <li>
+                    <input type="checkbox"> is it working ?
+                </li>
+                <li>
+                    <input type="checkbox"> answers
+                </li>
+                <li>
+                    <input type="checkbox"> Javascript tutorial
+                </li>
+                <li>
+                    <input type="checkbox"> azerty
+                </li>
+                <li>
+                    <input type="checkbox"> delete tags &lt;br/&gt;
+                </li>
+                <li>
+                    <input type="checkbox"> hiring
+                </li>
+                <li>
+                    <input type="checkbox"> question about the tutorial
+                </li>
+                <li>
+                    <input type="checkbox"> no access
+                </li>
+            </ol>
+            <p class="center">              
+                <button type="button" id="button-check">Check All</button>
+                <button type="button" id="button-uncheck">Uncheck All</button>
+            </p>
+            
+            <!-- QUESTION 2 -->
+            <p class="center">
+                <label>E:mail : </label>
+                <input type="text" id="email-1" placeholder="Enter your email">
+            </p>
+            <p class="center">
+                <label>Confirm :</label>
+                <input type="text" id="email-2" placeholder="Confirm your email">
+            </p>   
+            
+            <!-- QUESTION 3 -->
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Natural Selection 2</td>
+                        <td>Video Games</td>
+                    </tr>
+                    <tr>
+                        <td>Team Fortress</td>
+                        <td>Video Games</td>
+                    </tr>
+                    <tr>
+                        <td>Dreamweaver</td>
+                        <td>Softwares</td>
+                    </tr>
+                    <tr>
+                        <td>How to cook French fries</td>
+                        <td>Cooking</td>
+                    </tr>
+                    <tr>
+                        <td>How to park a car</td>
+                        <td>Driving</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script>
+        //QUESTION 1//
+        let checkButton = document.getElementById('button-check');
+        let uncheckButton = document.getElementById('button-uncheck');
+        let checkBoxes = document.querySelectorAll('.left input');
+
+        checkButton.addEventListener('click', function(e) {
+            for (let i=0, c=checkBoxes.length; i<c; i++) {    
+                let checkBox = checkBoxes[i];
+                checkBox.checked = true;
+            }
+        });
+
+        uncheckButton.addEventListener('click', function(e) {
+            for (let i=0, c=checkBoxes.length; i<c; i++) {    
+                let checkBox = checkBoxes[i];
+                checkBox.checked = false;
+            }
+        });
+
+        // QUESTION 2 //
+        var email_1 = document.getElementById('email-1');
+        var email_2 = document.getElementById('email-2');
+
+        email_1.addEventListener('keyup', function(e) {
+            e.target.style= 'border-color: green';
+        });
+
+        email_2.addEventListener('keyup', function(e) {
+            if (e.target.value === email_1.value) {
+                e.target.style = 'border-color: green';
+                email_1.style = 'border-color: green'
+            } else {
+                e.target.style = 'border-color: red'
+                email_1.style = 'border-color: red';
+            }
+        })
+
+        email_1.addEventListener('blur', function(e) {
+            e.target.style = 'none';
+            email_2.style = 'none';
+        });
+
+        email_2.addEventListener('blur', function(e) {
+                e.target.style = 'none';
+                email_1.style = 'none';
+        });
+
+        // QUESTION 3 //
+
+        let tableData = document.querySelectorAll('#output td');
+ 
+        for (let i=0, c=tableData.length; i<c; i++) {
+            tableData[i].addEventListener('click', function(e){
+                let input = document.createElement('input');
+                input.type = 'text';
+                let td = e.target
+                let data = td.firstChild; 
+                if (data === null) {
+                    return;
+                } else {    
+                    td.replaceChild(input, data);
+                }
+                input.focus();
+
+                input.addEventListener('blur', function(e) {
+                        if (e.target.value === '') {
+                            td.textContent = data.textContent;
+
+                        } else {
+                            data = e.target.value;
+                            e.target.parentNode.textContent = data;
+                        }
+                        e.target.blur();
+                    });        
+            });
+        }
+    </script>
+</html>
