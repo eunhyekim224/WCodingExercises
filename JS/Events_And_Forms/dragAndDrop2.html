@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Events practice 2</title>
+    </head>
+    <body>
+        <div class="draggableBox">1</div>
+        <div class="draggableBox">2</div>
+        <div class="draggableBox">3</div>
+    </body>
+    <style>
+        .draggableBox {
+            position: absolute;
+            width: 80px; height: 60px;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 40px;
+            background-color: #222;
+            color: #CCC;
+            cursor: move;
+        }
+    </style>
+    <script>
+
+    
+(function() {
+
+    let boxes = document.getElementsByClassName('draggableBox');
+    let mouseIsDown = false;
+
+    for (let i=0, c=boxes.length; i<c; i++) {
+        let box = boxes[i];
+
+        //first event
+        box.addEventListener('mousedown', function(e) {
+
+            //position of the mouse in the box 
+            let mouseX = e.clientX; 
+            let mouseY = e.clientY;
+
+            console.log('mouse:' + mouseX, mouseY);
+
+            //position of the box 
+            let boxX = box.offsetLeft;
+            let boxY = box.offsetTop;            
+
+            console.log('box:' + boxX, boxY);
+
+            let differenceX = mouseX - boxX;
+            let differenceY = mouseY - boxY;
+
+            console.log(differenceX, differenceY);
+
+            mouseIsDown = true;
+        });
+
+            //second event 
+            document.addEventListener('mousemove', function(e) {
+                if (mouseIsDown === true) {
+
+                    //new mouse positions (constantly updating as the mouse moves)
+                    let newMouseX = e.clientX;
+                    let newMouseY = e.clientY;
+                    console.log('newMouse:' + e.clientX, e.clientY);
+
+                    //new box position (top left)
+                    let newBoxX = newMouseX - differenceX;
+                    let newBoxY = newMouseY - differenceY;
+                    console.log('newBox: ' + newBoxX, newBoxY);
+
+                    //apply css to the box with new position
+                    box.style.top = newBoxY + 'px';
+                    box.style.left = newBoxX + 'px';
+
+                }
+            });
+
+
+                document.addEventListener('mouseup', function(e) {
+
+                    if (mouseIsDown === true) {
+                        newBoxX = box.offsetLeft;
+                        newBoxY = box.offsetTop;
+
+                        box.style.top = newBoxY+ 'px';
+                        box.style.left = newBoxX + 'px';
+
+                        console.log('final position of box :' + newBoxX, newBoxY)
+
+                        mouseIsDown = false;
+                    }
+
+                });
+    //         }); 
+    //     });
+    // }
+// })();
+    </script>
+</html>
