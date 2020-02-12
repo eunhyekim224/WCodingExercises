@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>JS Events practice 2</title>
+        <title>JS Drag & Drop</title>
     </head>
     <body>
         <div class="draggableBox">1</div>
@@ -35,6 +35,9 @@
         //first event
         box.addEventListener('mousedown', function(e) {
 
+
+            box.setAttribute('status', 'activated');
+
             //position of the mouse in the box 
             let mouseX = e.clientX; 
             let mouseY = e.clientY;
@@ -53,11 +56,13 @@
             console.log(differenceX, differenceY);
 
             mouseIsDown = true;
-        });
 
             //second event 
             document.addEventListener('mousemove', function(e) {
-                if (mouseIsDown === true) {
+
+                let isChosen = box.getAttribute('status') 
+
+                if (isChosen && mouseIsDown) {
 
                     //new mouse positions (constantly updating as the mouse moves)
                     let newMouseX = e.clientX;
@@ -74,27 +79,30 @@
                     box.style.left = newBoxX + 'px';
 
                 }
-            });
 
 
                 document.addEventListener('mouseup', function(e) {
 
-                    if (mouseIsDown === true) {
-                        newBoxX = box.offsetLeft;
-                        newBoxY = box.offsetTop;
+                    box.removeAttribute('status');
 
-                        box.style.top = newBoxY+ 'px';
-                        box.style.left = newBoxX + 'px';
+                    if (mouseIsDown) {
+                        // newBoxX = box.offsetLeft;
+                        // newBoxY = box.offsetTop;
 
-                        console.log('final position of box :' + newBoxX, newBoxY)
+                        // box.style.top = newBoxY+ 'px';
+                        // box.style.left = newBoxX + 'px';
+
+                        // no need to set this new position again! because as you stop moving, the coordinates will keep updating 
 
                         mouseIsDown = false;
                     }
 
                 });
-    //         }); 
-    //     });
-    // }
-// })();
+            }); 
+        });
+    }
+})();
     </script>
 </html>
+
+<!-- don't necessarily have to have them nested! -->
