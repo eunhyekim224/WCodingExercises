@@ -89,7 +89,7 @@
                 <p id="country">
                     <label for="countrySelect">Country :</label>
                     <select name="countrySelect" id="countrySelect">
-                        <option selected value></option>
+                        <option value=null></option>
                         <option value="Korea">Korea</option>
                         <option value="Korea">United Kingdom</option>
                         <option value="Korea">Japan</option>
@@ -127,6 +127,33 @@
 
             // ALERT FOR EACH INPUT
 
+            // for radio input
+
+            
+                for (let i=0; i<radioElem.length; i++) {
+                    radioElem[i].addEventListener('change', function(e) {
+                        if (!radioElem[i].checked) {
+                            radioElem[i].parentNode.lastElementChild.style = 'visibility: visible';
+                            console.log( radioElem[i].nextElementSibling);
+                        } else {
+                            radioElem[i].parentNode.lastElementChild.removeAttribute('style');
+                        }
+                    });
+                }
+
+            selectElem.addEventListener('change', function(e) {
+                let index = selectElem.selectedIndex;
+
+                if (index===0) {
+                    selectElem.setAttribute('class', 'redBorder');
+                    selectElem.nextElementSibling.style = 'visibility: visible';
+                } else if (index > 0){
+                    selectElem.setAttribute('class','greenBorder');
+                    selectElem.nextElementSibling.removeAttribute('style');
+                }
+
+            })
+
             for (item in inputs) {
                 inputs[item].addEventListener('keyup', function(e) {
                     let inputTarget = e.target;
@@ -148,16 +175,14 @@
                                     
                     if (inputTarget===inputs.lastName || inputTarget===inputs.firstName) {          
                         let lessThanTwoChar = /^[a-z]?$/;
-                        let test = lessThanTwoChar.test(inputValue)
+                        let test = lessThanTwoChar.test(inputValue);
                         alertError(test);
                         removeError(test);
                     }
                     if (inputTarget===inputs.age) {
-                        let ageRange = /^[5-9]|[1-9][0-9]|1[0-3][0-9]|140$/;                  
-                        let test = !ageRange.test(inputValue)
-                        // let test = inputValue <= 140 | inputValue >= 5;
-                        alertError(test);
-                        removeError(test)    
+                        let test = inputValue >= 5 && inputValue <= 140;
+                        alertError(!test);
+                        removeError(!test);
                     }
                     if (inputTarget===inputs.login) {
                         let fourCharOrMore = /[a-z0-9]{4,}/i;
@@ -177,7 +202,9 @@
                         removeError(test);
                     }     
                 });
-            }  
+            }
+            
+            
 
             // ON SUBMIT  
 
