@@ -7,12 +7,14 @@ function autoComplete() {
     let results = document.querySelector('#results');
 
     searchInput.addEventListener('keyup', (e)=> {
-        if (e.keyCode==40) {
-            results.firstElementChild.focus();
-            navigateSuggestions(results, searchInput);
-        } else {
-            getMatchedCity(e, results);
-        }      
+
+            if (e.keyCode==40) {
+                results.firstElementChild.focus();
+                navigateSuggestions(results, searchInput);
+            } else {
+                getMatchedCity(e, results);  
+            }      
+           
     });  
 }
 
@@ -39,15 +41,15 @@ function sortAndShowSuggestions(e, results) {
 function navigateSuggestions(results, search) {
     let allResults = results.childNodes;
 
+    console.log(allResults);
     for (let i=0, c=allResults.length; i<c; i++) {
         allResults[i].addEventListener('keyup', (e)=> {
-            if (e.keyCode===40) {
+
+            if (e.target.nextElementSibling && e.keyCode===40) {
                 e.target.nextElementSibling.focus();
-            } else if (e.keyCode===38) {
+            } else if (e.target.previousElementSibling && e.keyCode===38) {
                 e.target.previousElementSibling.focus();
             } else if (e.keyCode===13) {
-                e.target.blur();
-                search.focus();
                 search.value = e.target.textContent;
             }
         });
