@@ -1,0 +1,294 @@
+@font-face {
+    font-family: 'ballpark';
+    src: url('./fonts/ballpark.eot') format('embedded-opentype'),
+    url('./fonts/ballpark.ttf') format('truetype'), url('./fonts/ballpark.svg') format('svg'), url('./fonts/ballpark.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'dayrom';
+    src: url('./fonts/dayrom.eot') format('embedded-opentype'),
+    url('./fonts/dayrom.ttf') format('truetype'), url('./fonts/dayrom.svg') format('svg'), url('./fonts/dayrom.woff') format('woff');
+}
+
+body {
+    width: 60%;
+    margin: 0 auto;
+    font-family: sans-serif;
+    background-image: url(./images/fond_jaune.png);
+}
+
+/* header */
+
+header {
+    /* height will adapt to content */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav {
+    width: 50%;
+}
+
+nav ul {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+
+nav li {
+    list-style-type: none;
+    padding-top: 11%;
+    font-family: 'dayrom';
+    font-size: 1.3em;
+}
+
+nav li:hover {
+    text-decoration: underline rgba(119, 21, 103, 0.5);
+}
+
+#logo {
+    font-family: 'ballpark';
+    font-size: 2.3em;
+}
+
+#logo p {
+    font-family: 'dayrom';
+    font-size: 0.45em;
+    margin-top: 0;
+}
+
+#headerSeparatorTop {
+    background-image: url(./images/separateur.png);
+    height: 3px;
+    margin-top: -5px; 
+}
+
+section {
+    height: 335px;
+    position: relative;
+
+}
+
+.heading {
+    height: 10%;
+    margin-bottom: 0;
+    font-family: 'dayrom';
+    font-weight: lighter;
+}
+
+.heading img {
+    float: left;
+    height: auto;
+    margin-top: -10px;
+    margin-right: 10px;
+}
+
+article {
+    width: 67%;
+    /* display: inline-block; */
+    text-align: justify;
+    font-size: 0.9em;
+    margin-top: 2%;
+}
+
+article h3 {
+    display: none;
+}
+
+/* aside */
+
+aside {
+    width: 30%;
+    /* height: 100%; */
+    /* display: inline-block; */
+    position: absolute;
+    top: 0;
+    left: 70%;
+    vertical-align: top;
+    background-color: #706D65;
+    border-radius: 10px;
+    box-shadow: 0 0 3px black;
+}
+
+aside h3 {
+    color: white;
+    font-weight: lighter;
+    margin-left: 5%;
+}
+
+aside p {
+    text-align: center;
+    padding: 0 10px;
+}
+
+aside img[alt="zozor"] {
+    border: 1px solid black;
+    /* position: absolute; */
+    /* top: 12%;
+    left: 25%; */
+    box-shadow: 0 0 3px rgb(68, 66, 66);
+}
+
+#bio p {
+    font-size: 0.9em;
+    /* margin-left: 5%;
+    margin-right: 5%; */
+    color: white;
+    /* position: absolute;
+    top: 42%; */
+    text-align: justify;
+}
+
+#social {
+    /* display: flex;
+    flex-direction: row; */
+    /* position: absolute;
+    top: 73%;
+    right: 1%; */
+    font-size: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+#greyArrow {
+    position: absolute;
+    top: 20%;
+    right: 30%;
+    z-index: 6;
+}
+
+#bottomLine {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: -20px;
+}
+
+#bottomArrow {
+    position: absolute;
+    right: 50%;
+    bottom: 30%;
+    z-index: 5;
+}
+
+#ombre img {
+    position: absolute;
+    height: 15px;
+    bottom: 32px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 3;
+}
+
+#separatorBottom {
+    background-image: url(./images/separateur.png);
+    height: 3px;
+    /* margin-top: -5px; */
+    /* position: relative;
+    top: 45px; */
+    z-index: 6;
+}
+
+/* footer */
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* position: relative;
+    top: 50px; */
+}
+
+#firstFooter h3 {
+    margin-bottom: 30px;
+}
+
+.pictures {
+    margin-left: 10%;
+}
+
+#secondFooter {
+    margin-left: 6%;
+}
+#secondFooter figure {
+    margin-top: 20px;
+}
+
+#secondFooter img {
+    border: 1px solid black;
+    margin: -1px;
+    box-shadow: 0 0 3px rgb(68, 66, 66);
+}
+
+#thirdFooter div {
+    display: inline-block;
+    color: rgb(114, 28, 28);
+    font-size: 0.8em;
+    margin-top: 30px;
+}
+
+#thirdFooter {
+    width: 33%;
+}
+
+#part1 {
+     margin-right: 50px;
+}
+
+#thirdFooter p {
+    margin: 0;
+}
+
+/* banner */
+
+#banner {
+    height: 200px;
+    background: url(./images/sanfrancisco.jpg) no-repeat center/cover;
+    z-index: 2;
+    position: relative;
+    border-radius: 7px;
+    box-shadow: 0 0 3px rgb(68, 66, 66);
+}
+
+#smallBanner {
+    /* display: inline-block; */
+    position: absolute;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    height: 25%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#redButton {
+    display: inline-block;
+    position: absolute;
+    background: url("./images/fond_degraderouge.png");
+    height: 58.5%;
+    width: 11%;
+    border-radius: 7px;
+    box-shadow: 0 0 3px black;
+    top: 10px;
+    right: 10px;
+}
+
+/* use margin instead of absolute */
+
+#smallBanner > p {
+    left: 10px;
+    position: absolute;
+}
+/* padding/margin */
+
+#redButton p {
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 4px;
+}
+
+/* list-style-image: url("images/ico_liensexterne.png") */
