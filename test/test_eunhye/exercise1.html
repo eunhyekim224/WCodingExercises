@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test Exercise 1</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+            }
+            
+            #wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 50%;
+                align-items: center;
+            }
+
+            table {
+                justify-content: flex-start;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <form method="get" action="exercise1.html">
+                <label for="rowsInput">Number of rows</label>
+                <input type="text" name="rowsInput" id="rowsInput">
+                <label for="colsInput">Number of columns</label>
+                <input type="text" name="colsInput" id="colsInput">
+                <input type="submit" value="Generate" id="submitButton">
+            </form>
+            <table id="output"></table>
+        </div>
+        <script src="exercise1.js"></script>
+    </body>
+</html>
