@@ -13,6 +13,9 @@
             'message' =>  htmlspecialchars($_POST['message'])
         ));
         $response->closeCursor();
+
+        setcookie('pseudo', $_POST['pseudo']);
+
         header('Location: chat.php');    
     } else {
         header('Location: chat.php');    
