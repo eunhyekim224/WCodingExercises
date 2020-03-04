@@ -5,3 +5,7 @@
         echo 'Hello '.$_SESSION['login'].'!';
     } 
 ?>
+
+<button><a href="logout.php">Logout</a></button>
+
+

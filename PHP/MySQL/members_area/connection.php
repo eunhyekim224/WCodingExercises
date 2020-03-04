@@ -14,6 +14,8 @@ $remember_login = isset($_POST['remember_login']) ? $_POST['remember_login'] : '
 
 verify($db, $login, $password);
 remember_login($login, $password, $remember_login);
+echo $_COOKIE['member_login'];
+echo $_COOKIE['member_pw'];
 
 function verify($db, $login, $password) {
     $getDetails = $db->query("SELECT ID, login, password FROM members_area");
@@ -33,15 +35,9 @@ function verify($db, $login, $password) {
 
 function remember_login($login, $password, $remember_login) {
     if ($remember_login = 'remember') {
-        setcookie('login', $login, time() + 360*24*3600, null, null, false, true);
-        setcookie('password', $password, time() + 360*24*3600, null, null, false, true);
+        setcookie('member_login', $login, time() + 360*24*3600, null, null, false, true);
+        setcookie('member_pw', $password, time() + 360*24*3600, null, null, false, true);
     }
-}
-
-function checkCookies($db, $login, $password) {
-    
-
-
 }
 
 include('connection_page.php');
