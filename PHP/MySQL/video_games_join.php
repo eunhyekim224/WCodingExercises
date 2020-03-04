@@ -8,6 +8,13 @@
 
     // UPDATE VIDEO GAMES WITH FOREIGN KEYS
 
+    // $owner_details = $db->query("SELECT id, owner FROM video_games");
+    // while ($owner = $owner_details->fetch()) {
+    //     $owner_name = $owner['owner'];
+    //     $owner_id = $owner['id'];
+    //     $update = $db->prepare("UPDATE video_games SET owner_id=? WHERE owner=?");
+    //     $update->execute(array($owner_id, $owner_name));
+    // }
 
     // $update_florian = $db->exec("UPDATE video_games SET owner_id=1 WHERE owner='Florian'");
     // $update_john = $db->exec("UPDATE video_games SET owner_id=2 WHERE owner='John'");
@@ -20,6 +27,7 @@
     
     // QUESTION 1: JOIN with different clauses //
 
+    echo '<br><strong>With WHERE</strong><br>';
     $join_where = $db->query("SELECT v.name AS game_names, o.firstName AS owner_name
                                 FROM video_games v, owners o
                                 WHERE v.owner_id = o.id");
@@ -27,27 +35,30 @@
         echo $game['owner_name']."'s ".$game['game_names']."</br>";
     } 
 
-    $join_where = $db->query("SELECT v.name AS game_names, o.firstName AS owner_name
+    echo '<br><strong>With INNER JOIN</strong><br>';
+    $join_inner = $db->query("SELECT v.name AS game_names, o.firstName AS owner_name
                                 FROM video_games v 
                                 JOIN owners o
                                 ON v.owner_id = o.id");
-    while ($game = $join_where->fetch()) {
+    while ($game = $join_inner->fetch()) {
     echo $game['owner_name']."'s ".$game['game_names']."</br>";
     } 
 
-    $join_where = $db->query("SELECT v.name AS game_names, o.firstName AS owner_name
+    echo '<br><strong>With LEFT JOIN</strong><br>';
+    $join_left = $db->query("SELECT v.name AS game_names, o.firstName AS owner_name
                                 FROM video_games v 
                                 LEFT JOIN owners o
                                 ON v.owner_id = o.id");
-    while ($game = $join_where->fetch()) {
+    while ($game = $join_left->fetch()) {
     echo $game['owner_name']."'s ".$game['game_names']."</br>";
     }
     
-    $join_where = $db->query("SELECT v.name AS game_names, o.firstName AS owner_name
+    echo '<br><strong>With RIGHT JOIN</strong><br>';
+    $join_right = $db->query("SELECT v.name AS game_names, o.firstName AS owner_name
                                 FROM video_games v 
                                 RIGHT JOIN owners o
                                 ON v.owner_id = o.id");
-    while ($game = $join_where->fetch()) {
+    while ($game = $join_right->fetch()) {
     echo $game['owner_name']."'s ".$game['game_names']."</br>";
     } 
 
@@ -64,6 +75,14 @@
     // $add_field = $db->exec("ALTER TABLE `video_games` ADD `console_id` INT(11) NOT NULL AFTER `owner_id`");
 
     // UPDATE CONSOLE NAME WITH FOREIGN KEYS
+
+    //     $console_details = $db->query("SELECT id, console FROM video_games");
+    //     while ($console = $console_details->fetch()) {
+    //     $console_name = $console['console'];
+    //     $console_id = $console['id'];
+    //     $update = $db->prepare("UPDATE video_games SET console_id=? WHERE console=?");
+    //     $update->execute(array($console_id, $console_name));
+    // }
 
     // $update_NES = $db->exec("UPDATE video_games SET console_id=1 WHERE console='NES'");
     // $update_Megadrive = $db->exec("UPDATE video_games SET console_id=2 WHERE console='Megadrive'");
@@ -87,6 +106,7 @@
     // $add_game = $db->exec("INSERT INTO video_games(name, owner_id, console_id, price, nb_players_max, comments) VALUES('Find Eunhye', 1, 0, 20, 4, 'Warning: super hard game!')");
 
     // STEP 3 QUESTION 1: display every game's names with type of console WITH WHERE CLAUSE
+
     echo '<br><strong>With WHERE</strong><br>';
     $name_console = $db->query("SELECT v.name AS game_name, c.name AS console_name
                                 FROM video_games v, consoles c
