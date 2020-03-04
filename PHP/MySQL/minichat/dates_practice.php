@@ -107,12 +107,53 @@ echo '<br>Question 9</br>';
 //     'date_creation' => $date_creation
 // ));
 
-$response = $db->query("SELECT pseudo, message, date_creation, DATE_SUB(date_creation, INTERVAL 20 DAY) AS twenty_days_ago FROM minichat ORDER BY date_creation DESC LIMIT 0, 10");
+// $response = $db->query("SELECT pseudo, message, date_creation, DATE_SUB(date_creation, INTERVAL 20 DAY) AS twenty_days_ago FROM minichat ORDER BY date_creation DESC LIMIT 0, 10");
 
-while ($data = $response->fetch()) {
-    echo $data['pseudo'].': '.$data['message']. ' '. $data['date_creation'].' 20 days ago: '.$data['twenty_days_ago'];
-}
+// while ($data = $response->fetch()) {
+//     echo $data['pseudo'].': '.$data['message']. ' '. $data['date_creation'].' 20 days ago: '.$data['twenty_days_ago'];
+// }
+?>
+    <div id="mainWrapper">
+        <form action="http://localhost:8080/sites/sql_practice/minichat/chat.php" method="POST">
+            <p>
+                <label for="login">Login:</label>
+                <input type="text" name="login" id="login"/>
+            </p>
+            <p>
+                <label for="msg">Message:</label>
+                <textarea name="msg" id="msg" cols=27 rows=6>Maximum 255 characters</textarea>
+            </p>
+            <p>
+                <input type="submit" value="Send" />
+                <input type="button" value="Refresh" id="refresh_btn">
+            </p>
+            <p>
+                <label>Choose number of messages to display:</label>
+                <input type="radio" name="options" value=10 checked/><label>10</label>
+                <input type="radio" name="options" value=20><label>20</label>
+                <input type="radio" name="options" value="all"><label>All</label>
+            </p>
+        </form>
+        <div id="result">
+            <?php
+            //Connection to DB
+            try {
+                $db = new PDO('mysql: host=localhost; dbname=test; charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            } catch (Exception $error) {
+                die('Error: '.$error->getMessage());
+            }
+            
+        
+            $request = $db->query("SELECT pseudo, message, date_creation FROM minichat WHERE date_creation > DATE_SUB(DATE(NOW()), INTERVAL 20 DAY) ORDER BY date_creation");
 
+            while($result = $request->fetch()) {
+            echo '<p><strong>'.$result['pseudo'].':</strong> '.$result['message'].' ('.$result['date_creation'].')</p>';
+            }
+            $request->closeCursor();
+            ?>
+        </div>
+    </div>
+<?php
 // QUESTION 10 //
 // Add an expiration date to your message for 2 months after the date of add into the database.
 echo '<br>Question 10</br>';
@@ -121,4 +162,6 @@ $response = $db->exec("UPDATE minichat SET date_creation = DATE_ADD(date_creatio
 
 
 ?>
+
+
 
