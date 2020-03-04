@@ -85,7 +85,6 @@ while ($data = $response->fetch()) {
 // Change into French format the date and display the first 15 messages into your database with this new format with the DATE_FORMAT function
 echo '<br>Question 8</br>';
 
-
 $response = $db->query("SELECT pseudo, message, date_creation, DATE_FORMAT(date_creation, '%d/%m/%Y') AS date FROM minichat ORDER BY date_creation DESC LIMIT 0, 15");
 
 while ($data = $response->fetch()) {
@@ -162,6 +161,4 @@ $response = $db->exec("UPDATE minichat SET date_creation = DATE_ADD(date_creatio
 
 
 ?>
-
-
 
