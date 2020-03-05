@@ -16,7 +16,7 @@
 
         foreach ($member_details as $key => $member) {
 
-            if ($member['member_login'] === $_COOKIE['login'] AND password_verify($_COOKIE['member_pw'], $member['password'])) {
+            if ($member['login'] === $_COOKIE['member_login'] AND password_verify($_COOKIE['member_pw'], $member['password'])) {
                 header('Location: minichat_member.php');
             } 
         }

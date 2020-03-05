@@ -1,7 +1,10 @@
 <?php
     session_start();
-    $_SESSION = [];
     session_destroy();
-    
+
+    setcookie('member_login', '');
+    setcookie('member_pw', '');
+
     header('Location: connection_page.php');
 ?>
+
