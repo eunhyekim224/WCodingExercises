@@ -2,6 +2,8 @@
     session_start();
     if (isset($_SESSION['login']) AND isset($_SESSION['id'])) {
         echo 'Hello '.$_SESSION['login'].'!';
+    } else if (isset($_COOKIE['member_login'])) {
+        echo 'Hello '.$_COOKIE['member_login'];
     }
 ?>
 
@@ -24,7 +26,8 @@
     <body>
         <div id="wrapper">
             <div id="buttons">
-                <button><a href="logout.php">Logout</a></button>
+                <button><a href="logout.php">Logout</a></button></br>
+                <button><a href="index.php">Register a new account</a></button>
             </div>
             <div id="chat">
                 <?php include('minichat_james.php')?>

@@ -47,17 +47,24 @@
         <div id="container">
             
                 <!-- the legend -->
- 
-                
+          
             <?php
-                $text_value = isset($_COOKIE['pseudo'])?$_COOKIE['pseudo']:'';
+                function checkLogin() {
+                    if (isset($_SESSION['login'])) {
+                        echo $_SESSION['login'];
+                    } else if (isset($_COOKIE['member_login'])) {
+                        echo $_COOKIE['member_login'];
+                    } else {
+                        echo '';
+                    }
+                }
             ?>
-            <form method="post" action="minichat_post.php">
+            <form method="post" action="minichat_j_post.php">
                 
                 <div class="contactInput">
                     <div class="contentDiv">
                         <label for="pseudo">Pseudo : </label>
-                        <input type="text" name="pseudo" id="pseudo" size="50" maxlength="50" value=<?php echo $text_value;?>>
+                        <input type="text" name="pseudo" id="pseudo" size="50" maxlength="50" readonly value=<?php echo checkLogin();?>>
                         <label for="message">Message : </label>
                         <textarea name="message" id="message"  rows="10" cols="50" required></textarea>
                         <input type="submit" value="submit" id="submit"/>
@@ -65,7 +72,7 @@
                     
                 </div>
                 
-                
+        
 
             </form>
 

@@ -1,10 +1,5 @@
 <?php
 session_start();
-// if(isset($_POST['pseudo'])){
-//     $_SESSION["pseudo"] = $_POST['pseudo'];
-// }
-
-
 
 try {
     $db = new PDO('mysql:host=localhost;dbname=james_minichat;charset=utf8','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -25,9 +20,7 @@ try {
     setcookie("pseudo",$pseudo,time()+ 365*24*3600, null ,null ,false, true);
 
 
-
-
- header('Location: minichat_james.php');
+ header('Location: minichat_member.php');
 
 
 ?>
