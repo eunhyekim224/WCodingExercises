@@ -19,7 +19,6 @@
         </style>
     </head>
     <body>
-        
         <div id="wrapper">
             <form method="post" action="connection.php">
                 <p>

@@ -30,7 +30,10 @@
                 <button><a href="index.php">Register a new account</a></button>
             </div>
             <div id="chat">
-                <?php include('minichat_james.php')?>
+                <?php 
+                    include('minichat_james.php');
+                    include('join_member_to_chat.php')
+                ?>
             </div>
         </div> 
     </body>

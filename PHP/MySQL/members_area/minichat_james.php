@@ -31,14 +31,6 @@
             text-align:center;
             padding-top:5%;
         }
-        /* #messages{
-            text-align:center;
-            padding-top:5%;
-        } */
-        
-        /* #messages{
-            border:1px solid black;
-        } */
         </style>
     </head>
     
@@ -91,26 +83,14 @@
         </div>
 
         <script>
-            let sentValue = 10;
-            function refreshPage( ){
-                
-                // var ten = document.getElementById('ten');
-                // ten.onclick= function(){
-                //     sentValue = 10;
-                // }
-                // var twenty = document.getElementById('twenty');
-                // twenty.onclick= function(){
-                //     sentValue = 20;
-                // }
-                // var all = document.getElementById('thirty');
-                // all.onclick= function(){
-                //     sentValue = 'all';
-                // }
-
+            
+            function refreshPage(){
+                let sentValue = 0;
+                console.log('hey');
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', `http://localhost:8080/sites/sql_practice/member_area/minichat_j_load.php?range=${sentValue}`);
 
-                xhr.addEventListener('readystatechange', function(){ 
+                xhr.addEventListener('readystatechange', function() { 
                     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                         var content = document.getElementById('content');
                         content.innerHTML = xhr.responseText;
@@ -119,10 +99,8 @@
                 
                 })
                 xhr.send(null);
-                var oldMessages = document.getElementById('messages')
-                oldMessages.parentNode.removeChild(oldMessages);
-               
-
+                // var oldMessages = document.getElementById('content')
+                // oldMessages.parentNode.removeChild(oldMessages);
             }
             
             var radioButtons = document.querySelectorAll('input[name=range]');
@@ -143,10 +121,8 @@
                 xhr.send(null);
                 var oldMessages = document.getElementById('messages');
                 oldMessages.parentNode.removeChild(oldMessages);
-
                 })
             }
-
 
         </script>
         

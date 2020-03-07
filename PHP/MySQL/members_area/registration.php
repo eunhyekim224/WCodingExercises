@@ -1,6 +1,6 @@
 <?php
     try {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '',
+        $db = new PDO('mysql:host=localhost;dbname=james_minichat;charset=utf8', 'root', '',
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     } catch(Exception $e) {
         die('Error: '. $e->getMessage());
@@ -16,6 +16,7 @@
     $confirmPw = confirmPw($password, $confirm_pw);
 
     addMemberInfo($db, $login, $password, $email, $checkForm, $checkLogin, $confirmPw);
+    addMemberID($db);
 
     function addMemberInfo($db, $login, $password, $email, $checkForm, $checkLogin, $confirmPw) {
         if ($checkForm AND $checkLogin AND $confirmPw) {
@@ -58,6 +59,25 @@
             return true;
         }   
     }
+
+    try {
+        $db = new PDO('mysql:host=localhost;dbname=james_minichat;charset=utf8', 'root', '',
+        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    } catch(Exception $e) {
+        die('Error: '. $e->getMessage());
+    }
+
+    function addMemberID($db) {
+        $member_details = $db->query("SELECT id, login FROM members_area");
+        while ($member = $member_details->fetch()) {
+            $member_login = $member['login'];
+            $member_id = $member['id'];
+            $update = $db->prepare("UPDATE minichat SET member_id=? WHERE pseudo=?");
+            $update->execute(array($member_id, $member_login));
+        }
+    }
+
+    
 
     include('index.php');
 ?>
