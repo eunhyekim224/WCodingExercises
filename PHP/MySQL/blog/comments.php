@@ -7,6 +7,7 @@
     </head>
     <body>
         <div id="comments_wrapper">
+            <a href="index.php">Back to the article list</a></br>
             <?php
                 try {
                     $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '',
@@ -15,37 +16,32 @@
                     die('Error: '. $e->getMessage());
                 }
 
-                showEachArticle($db);
-
-                function showEachArticle($db) {
-                    echo '<a href="index.php">Back to the article list</a></br>';
-                    if (isset($_GET['id_article']) && $_GET['id_article'] > 0 && $_GET['id_article'] < 100) {
-                        $id_article = $_GET['id_article'];
-                        setcookie('id_article', $id_article);
-                        showArticle($id_article, $db);
-                        showComments($id_article, $db);
-                    } else {
-                        echo 'No comments available for this article!';
-                    }
+                $id_article = isset($_GET['id_article']) ? $_GET['id_article'] : '';
+                if ($id_article &&  $id_article > 0 &&  $id_article < 100) {
+                    showArticle($id_article, $db);
+                } else {
+                    echo 'No comments available for this article!';
                 }
+                
 
                 function showArticle($id, $db) {
                     $response = $db->query("SELECT *, DATE_FORMAT(date_creation,'%d/%m/%Y at %h\h%i\min%s\s') as date FROM articles WHERE id=$id");
-                    while ($data = $response->fetch()) {
-                        if (empty($data)) {
-                            echo 'This article does not exist.';
-                        } else {
-                            echo '<div class="news"><h1>'.$data['title'].' '.$data['date'].'</h1>
-                            <p>'
-                            .$data['content'].
-                            "</p></div>";
-                        }    
-                    }
+                    $article = $response->fetch();
+                    if (empty($article)) {
+                        echo 'This article does not exist.';
+                    } else {
+                        include('display_article.php');
+                        showComments($id, $db);
+                        include('form_add_comment.php');
+                        include('pages.php');
+                    }    
                     $response->closeCursor();
                 }
 
-                function showComments($article, $db) {        
-                    $response_comments = $db->prepare("SELECT *, DATE_FORMAT(date_creation,'%d/%m/%Y at %h\h%i\min%s\s') as date FROM comments WHERE id_article = :id_article ORDER BY date_creation LIMIT 0, 10");
+                function showComments($article, $db) {
+                    $page = isset($_GET['page']) ? (int)$_GET['page']-1 : 0;
+                    $limit_start = $page*5;
+                    $response_comments = $db->prepare("SELECT *, DATE_FORMAT(date_creation,'%d/%m/%Y at %h\h%i\min%s\s') as date FROM comments WHERE id_article = :id_article ORDER BY date_creation DESC LIMIT $limit_start, 5");
                     $response_comments->execute(array(
                         'id_article' => htmlspecialchars($article)
                     ));
@@ -57,20 +53,8 @@
 
                     $response_comments->closeCursor();
                 }
+
             ?>
-            <form method="post" action="comment_post.php">
-                <p>
-                    <label for="name">Name: </label>
-                    <input type="text" name="name" id="name">
-                </p>
-                <p>
-                    <label for="comment">Comment: </label>
-                    <input type="text" name="comment" id="comment">
-                </p>
-                <p>
-                    <input type="submit" value="Submit" id="submit">
-                </p>
-            </form>
         </div>
     </body>
 </html>

@@ -19,16 +19,14 @@
 
                     function showAllArticles($db) {
 
-                        $response = $db->query("SELECT *, DATE_FORMAT(date_creation,'%d/%m/%Y at %h\h%i\min%s\s') as date FROM articles ORDER BY date_creation DESC LIMIT 0, 5");
-                        while ($data = $response->fetch()) {
-                            echo '<div class="news"><h1>'.$data['title'].' '.$data['date'].'</h1>
-                            <p>'
-                            .$data['content']."</br><a href='comments.php?id_article=".$data['id']."'>Comments</a>
-                            </p></div>";
+                        $page = isset($_GET['page']) ? (int)$_GET['page']-1 : 0;
+                        $limit_start = $page*5;
+                        $response = $db->query("SELECT *, DATE_FORMAT(date_creation,'%d/%m/%Y at %h\h%i\min%s\s') as date FROM articles ORDER BY date_creation DESC LIMIT $limit_start, 5");
+                        while ($article = $response->fetch()) {
+                            include('display_article.php');
                         }
-
                     }  
-
+                    include('pages.php');
                 ?>
         </div>
 

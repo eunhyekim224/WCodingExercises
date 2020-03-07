@@ -6,10 +6,9 @@
         die('Error: '. $e->getMessage());
     }
 
-    $id_article = $_COOKIE['id_article'];
+    $id_article = $_POST['id_article'];
 
     addComment($db, $id_article);
-
 
     function addComment($db, $id_article) {
             
@@ -23,8 +22,7 @@
 
             $response->closeCursor();
         }
-            header('Location: comments.php?id_article='.$id_article);    
-      
+            header("Location:comments.php?id_article=$id_article");    
     } 
     
 ?>
