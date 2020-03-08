@@ -84,9 +84,9 @@
 
         <script>
             
+            let sentValue = 10;
             function refreshPage(){
-                let sentValue = 0;
-                console.log('hey');
+
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', `http://localhost:8080/sites/sql_practice/member_area/minichat_j_load.php?range=${sentValue}`);
 
